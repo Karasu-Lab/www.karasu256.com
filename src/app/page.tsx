@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
+import { FaJava } from 'react-icons/fa6';
+import { SiCloudflare, SiJavascript, SiNixos, SiRaspberrypi, SiRust, SiTypescript, SiUbuntu, SiVercel } from 'react-icons/si';
 import { AvatarSection } from '@/components/home/avatar-section';
 import { ContentContainer } from '@/components/home/content-container';
 import { HomeFooter } from '@/components/home/home-footer';
@@ -22,15 +24,29 @@ const PROFILE = {
 const SKILL_GROUPS: SkillGroup[] = [
   {
     title: 'インフラ',
-    items: ['Cloudflare', 'Vercel', 'NixOS, Ubuntu', 'Raspberry Pi'],
+    variant: 'icons',
+    items: [
+      { label: 'Cloudflare', icon: SiCloudflare },
+      { label: 'Vercel', icon: SiVercel },
+      { label: 'NixOS', icon: SiNixos },
+      { label: 'Ubuntu', icon: SiUbuntu },
+      { label: 'Raspberry Pi', icon: SiRaspberrypi },
+    ],
   },
   {
     title: '開発',
+    variant: 'list',
     items: ['AI Driven Development', 'Minecraft modding', 'Website publishing'],
   },
   {
     title: 'プログラム言語',
-    items: ['TypeScript, JavaScript', 'Java', 'Rust'],
+    variant: 'icons',
+    items: [
+      { label: 'TypeScript', icon: SiTypescript },
+      { label: 'JavaScript', icon: SiJavascript },
+      { label: 'Java', icon: FaJava },
+      { label: 'Rust', icon: SiRust },
+    ],
   },
 ];
 
