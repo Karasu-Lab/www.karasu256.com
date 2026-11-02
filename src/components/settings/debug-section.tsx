@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { Switch, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@karasu-lab/ui';
-import { useFeatureFlags } from '@karasu-lab/flags/client';
+import { useFeatureFlags } from '@karasu-lab/flags-sdk/client';
 import { appFlagsSchema } from '@/lib/flags';
 
 /** Debug settings section — displays the live value of this app's demo feature flags. */

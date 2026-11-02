@@ -5,7 +5,7 @@ import { getLocale, getMessages, getTranslations } from 'next-intl/server';
 import { PopUpMenuProvider, R2StorageProvider, SessionProvider } from '@karasu-lab/ui';
 import { geistSans, geistMono, notoSansJP } from '@karasu-lab/ui/fonts';
 import { getSessionUser } from '@karasu-lab/utils/server';
-import { FeatureFlagsProvider } from '@karasu-lab/flags/server';
+import { FeatureFlagsProvider } from '@karasu-lab/flags-sdk/server';
 import './globals.css';
 import Header from '@/components/Header';
 import { appFlags, appFlagsSchema } from '@/lib/flags';
