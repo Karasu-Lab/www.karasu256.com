@@ -5,7 +5,7 @@ import { withUi } from '@karasu-lab/ui/next';
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig: NextConfig = {
-  transpilePackages: ['@karasu-lab/ui', '@karasu-lab/utils', '@karasu-lab/flags'],
+  transpilePackages: ['@karasu-lab/ui', '@karasu-lab/utils', '@karasu-lab/flags-sdk'],
   devIndicators: false,
   /**
    * `@vercel/flags-core` dynamically imports the optional `@vercel/flags-definitions`
