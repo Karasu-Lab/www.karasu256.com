@@ -3,18 +3,13 @@ import { eq } from 'drizzle-orm';
 import { z } from 'zod';
 import { getDb } from '@karasu-lab/db';
 import { users } from '@karasu-lab/db/schema';
-import { Permissions } from '@karasu-lab/api-permissions';
 import { APIKeyRoute, OauthAppRoute, RequirePermission } from '@/lib/api/route-auth';
 
 const patchBodySchema = z.object({ name: z.string().nullable() });
 
-/**
- * Reads the authenticated user's profile.
- * Requires a Bearer token with the `profile:read` permission.
- */
 export const GET = APIKeyRoute()(
   OauthAppRoute()(
-    RequirePermission(Permissions.profile.read)(async (_request, _ctx, auth) => {
+    RequirePermission('users:profile.read')(async (_request, _ctx, auth) => {
       const db = getDb();
       const [user] = await db.select({ id: users.id, name: users.name }).from(users).where(eq(users.id, auth.userId));
 
@@ -25,13 +20,9 @@ export const GET = APIKeyRoute()(
   )
 );
 
-/**
- * Updates the authenticated user's display name.
- * Requires a Bearer token with the `profile:write` permission.
- */
 export const PATCH = APIKeyRoute()(
   OauthAppRoute()(
-    RequirePermission(Permissions.profile.write)(async (request, _ctx, auth) => {
+    RequirePermission('users:profile.write')(async (request, _ctx, auth) => {
       const parsed = patchBodySchema.safeParse(await request.json());
       if (!parsed.success) {
         return NextResponse.json({ error: 'invalid_request' }, { status: 400 });
