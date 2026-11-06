@@ -11,12 +11,12 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "@karasu-lab/api-permissions": "0.1.0-4b04f47",
+    "@karasu-lab/api-permissions": "0.1.0-aaf3d2c",
     "@karasu-lab/db": "0.1.0-84bddbd",
     "@karasu-lab/flags-sdk": "0.1.0-dab071f",
     "@karasu-lab/types": "0.1.0-5fc5494",
     "@karasu-lab/ui": "0.1.0-df38f4a",
-    "@karasu-lab/utils": "0.1.0-be51f04",
+    "@karasu-lab/utils": "0.1.0-279abf7",
     "@base-ui/react": "^1.6.0",
     "@better-auth/oauth-provider": "^1.7.12",
     "@flags-sdk/vercel": "^1.4.4",
