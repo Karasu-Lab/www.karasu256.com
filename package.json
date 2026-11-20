@@ -14,7 +14,7 @@
     "@base-ui/react": "^1.6.0",
     "@better-auth/oauth-provider": "^1.7.12",
     "@flags-sdk/vercel": "^1.4.4",
-    "@karasu-lab/api-permissions": "0.1.0-aaf3d2c",
+    "@karasu-lab/api-permissions": "0.1.0-70bd6e4",
     "@karasu-lab/db": "0.1.0-84bddbd",
     "@karasu-lab/flags": "0.1.0-190fe8c",
     "@karasu-lab/types": "0.1.0-1950a9c",
