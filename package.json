@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^15.3.9",
-    "@playwright/test": "^1.61.1",
+    "@playwright/test": "^1.65.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
