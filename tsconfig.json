@@ -21,8 +21,6 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@karasu-lab/db": ["../../packages/db/src/index.ts"],
-      "@karasu-lab/db/schema": ["../../packages/db/src/schema/index.ts"],
       "@karasu-lab/ui": ["../../packages/ui/src/index.ts"],
       "@karasu-lab/utils/server": ["../../packages/utils/src/server/index.ts"],
       "@karasu-lab/utils/client": ["../../packages/utils/src/client/index.ts"]
