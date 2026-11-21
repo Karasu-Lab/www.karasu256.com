@@ -1,11 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getDb } from '@karasu-lab/db';
-import { users } from '@karasu-lab/db/schema';
-import { eq } from 'drizzle-orm';
 import { z } from 'zod';
 
 import { requireSession } from '@/lib/api/require-session';
-import { ensureUser } from '@/lib/db/ensure-user';
+import { fetchUserProfile, updateUserProfile } from '@/lib/api/user-profile';
 
 const patchBodySchema = z.object({ name: z.string().optional() });
 
@@ -13,8 +10,9 @@ export async function GET() {
   const { user, error } = await requireSession();
   if (error) return error;
 
-  const row = await ensureUser(user.uid, user.name);
-  return NextResponse.json({ id: row.id, name: row.name });
+  const profile = await fetchUserProfile(user.uid);
+  if (!profile) return NextResponse.json({ error: 'not_found' }, { status: 404 });
+  return NextResponse.json(profile);
 }
 
 export async function PATCH(request: NextRequest) {
@@ -25,15 +23,8 @@ export async function PATCH(request: NextRequest) {
   if (!parsed.success) {
     return NextResponse.json({ error: 'name must be a string' }, { status: 400 });
   }
-  const { name } = parsed.data;
 
-  const db = getDb();
-  await ensureUser(user.uid);
-  const [updated] = await db
-    .update(users)
-    .set({ name: name ?? null, updatedAt: new Date() })
-    .where(eq(users.id, user.uid))
-    .returning();
-
-  return NextResponse.json({ id: updated.id, name: updated.name });
+  const updated = await updateUserProfile(user.uid, parsed.data.name ?? null);
+  if (!updated) return NextResponse.json({ error: 'not_found' }, { status: 404 });
+  return NextResponse.json(updated);
 }
