@@ -18,14 +18,14 @@ const nextConfig: NextConfig = {
    */
   serverExternalPackages: ['@vercel/flags-core'],
   async rewrites() {
-    const authApiUrl = process.env.NEXT_PUBLIC_AUTH_API_URL;
-    if (!authApiUrl) return { beforeFiles: [] };
+    const assetlinkHost = process.env.ASSETLINK_HOST;
+    if (!assetlinkHost) return { beforeFiles: [] };
     return {
       beforeFiles: [
         {
           source: '/.well-known/assetlinks.json',
           has: [{ type: 'host', value: 'dev.karasu256.com' }],
-          destination: `${authApiUrl}/.well-known/assetlinks.json`,
+          destination: `https://${assetlinkHost}/asset-links`,
         },
       ],
     };
