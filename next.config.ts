@@ -17,6 +17,19 @@ const nextConfig: NextConfig = {
    * where the existing fallback handling applies.
    */
   serverExternalPackages: ['@vercel/flags-core'],
+  async rewrites() {
+    const authApiUrl = process.env.NEXT_PUBLIC_AUTH_API_URL;
+    if (!authApiUrl) return { beforeFiles: [] };
+    return {
+      beforeFiles: [
+        {
+          source: '/.well-known/assetlinks.json',
+          has: [{ type: 'host', value: 'dev.karasu256.com' }],
+          destination: `${authApiUrl}/.well-known/assetlinks.json`,
+        },
+      ],
+    };
+  },
   /** The OAuth client test in accounts' developer settings calls `/api/profile` cross-origin with a Bearer token. */
   async headers() {
     const accountsUrl = process.env.NEXT_PUBLIC_ACCOUNTS_URL;
